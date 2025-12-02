@@ -1,0 +1,73 @@
+TRAIN:
+  ENABLE: True
+  DATASET: holoassist
+  EVAL_PERIOD: 4
+  CHECKPOINT_PERIOD: 1
+  AUTO_RESUME: True
+  TEACHER_RATIO : 0.5
+  BATCH_SIZE: 64
+  PRETRAINED: True
+DATA:
+  TIME_RANGE: 1.0 # this is no effect
+  NUM_FRAMES: 8
+  #SAMPLING_RATE: 32
+  TRAIN_JITTER_SCALES: [256, 320]
+  TRAIN_CROP_SIZE: 224
+  TEST_CROP_SIZE: 224
+  INPUT_CHANNEL_NUM: [3]
+  LABEL_FILE: "labels_20240723_2221_classes.json"
+  CLASS_FILE: "labels_20240723_2221_label2idx.json"
+  HEAD_CLASS_FILE: "labels_20240723_2221_label2idx_head_above10.json"
+  BENCHMARK: "hand_forecast"
+  LOAD_TYPE: "forecast"
+  DIM_NUM: 78 # joints x dim
+  CLIP_DIST: 1.5
+  HAND_NORM: True
+# TIMESFORMER:
+#   ATTENTION_TYPE: "divided_space_time" # standard encoder 
+SOLVER:
+  BASE_LR: 0.001 # 0.02
+  LR_POLICY: steps_with_relative_lrs
+  MAX_EPOCH: 9
+  STEPS: [0, 4, 8]
+  LRS: [1, 0.1, 0.01]
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.0 #1e-4
+  OPTIMIZING_METHOD: sgd
+  WARMUP_START_LR: 0.005
+  WARMUP_EPOCHS: 0.5
+MODEL:
+  MODEL_NAME: seq2seq
+  NUM_CLASSES: 2283
+  # MODEL_DIM: 7020
+  OUTPUT_HEAD_NUM: 1
+  ARCH: vit
+  LOSS_FUNC: l2
+  DROPOUT_RATE: 0.5
+TEST:
+  ENABLE: True
+  DATASET: holoassist
+  BATCH_SIZE: 64
+  NUM_ENSEMBLE_VIEWS: 1
+  NUM_SPATIAL_CROPS: 3
+DATA_LOADER:
+  NUM_WORKERS: 32
+  PIN_MEMORY: True
+NUM_SHARDS: 1
+RNG_SEED: 0
+USE_WANDB: False
+
+
+# FLAGS to fill at launching
+PATH_TO_DATA_DIR: "" 
+LABEL_DIR: "" 
+TASKS:
+  # - "rgb"
+  - "hands-left"
+  - "hands-right"
+  # - "eye"
+  # - "head"
+OUTPUT_DIR: "./" 
+NUM_GPUS: 1
+DEVICE: "cuda"
+  

@@ -1,0 +1,64 @@
+TRAIN:
+  ENABLE: True
+  DATASET: holoassist
+  EVAL_PERIOD: 3
+  CHECKPOINT_PERIOD: 1
+  AUTO_RESUME: True
+  PRETRAINED: True
+  BATCH_SIZE: 32
+DATA:
+  TIME_RANGE: 1.0 # this is no effect
+  NUM_FRAMES: 8
+  SAMPLING_RATE: 32
+  TRAIN_JITTER_SCALES: [256, 320]
+  TRAIN_CROP_SIZE: 224
+  TEST_CROP_SIZE: 224
+  INPUT_CHANNEL_NUM: [3]
+  LABEL_FILE: "labels_20240719_2221_classes.json" 
+  CLASS_FILE: "labels_20240719_2221_label2idx.json" 
+  HEAD_CLASS_FILE: "labels_20240719_2221_label2idx_head_above10.json" 
+  BENCHMARK: "coarse_grained_action"
+  LOAD_TYPE: "recognition"
+  ATTENTION_TYPE: "divided_space_time" 
+SOLVER:
+  BASE_LR: 0.02
+  LR_POLICY: steps_with_relative_lrs
+  MAX_EPOCH: 15
+  STEPS: [0, 11, 14]
+  LRS: [1, 0.1, 0.01]
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 1e-4
+  OPTIMIZING_METHOD: sgd
+  WARMUP_START_LR: 0.005
+  WARMUP_EPOCHS: 0.5
+MODEL:
+  MODEL_NAME: vit_base_patch16_224
+  NUM_CLASSES: 414 #508
+  OUTPUT_HEAD_NUM: 1
+  ARCH: vit
+  LOSS_FUNC: cross_entropy
+  DROPOUT_RATE: 0.5
+TEST:
+  ENABLE: True
+  DATASET: holoassist
+  BATCH_SIZE: 128
+  NUM_ENSEMBLE_VIEWS: 1
+  NUM_SPATIAL_CROPS: 3
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+NUM_SHARDS: 1
+RNG_SEED: 0
+USE_WANDB: False
+
+# FLAGS to fill at launching
+PATH_TO_DATA_DIR: ""
+LABEL_DIR: ""
+TASKS:
+  - "rgb"
+  - "hands-left"
+  - "hands-right"
+  - "eye"
+  - "head"
+OUTPUT_DIR: "./"
+NUM_GPUS: 16
