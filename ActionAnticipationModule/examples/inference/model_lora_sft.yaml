@@ -1,0 +1,4 @@
+model_name_or_path: /root/autodl-tmp/model
+template: model
+infer_backend: huggingface  # choices: [huggingface, vllm, sglang, ktransformers]
+trust_remote_code: true

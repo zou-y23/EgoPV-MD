@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1,2,3,4 NPROC_PER_NODE=5 llamafactory-cli train examples/train_qlora/llama3_lora_sft_otfq.yaml
