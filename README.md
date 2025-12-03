@@ -72,26 +72,22 @@ If you wish to evaluate the performance of individual components (ARM and ACM) s
 **1. ARM (Action Recognition Module)**
 Evaluate the action recognition performance:
 
-    ```bash
     cd ActionRecognitionModule
     python run_net.py --cfg configs/fine_action_recognition.yaml
-    ```
 
 **2. ACM (Action Captioning Module)**
 Generate Narrations:
 
-    ```bash
     cd ActionCaptioningModule
     python python main.py 
-    ```
+
 > **Note:** This process can be time consuming, we provide the generated results for evaluations directly. 
 
 Evaluation using the generated results:
 
-    ```bash
     cd ActionCaptioningModule
     python test.py
-    ```
+
 
 ### 2. Training
 
