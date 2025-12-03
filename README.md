@@ -53,14 +53,14 @@ Please follow the instructions below to run inference and training. We recommend
 #### Overall Mistake Detection 
 To reproduce the final results of the paper (Mistake Detection), utilize the **AAM** module. 
 
-1.  **Generate Predictions:** Load the pre-trained model and generate predictions. 
+1.  **Generate Predictions:** Load the pre-trained model and generate predictions: 
     ```bash
     cd ActionAnticipationModule
     python generate_text.py
     ```
 > **Note:** This process can be time consuming, we provide the generated results for evaluations directly. 
 
-2.  **Evaluation Results:** Evaluation using the generated and comparison results. 
+2.  **Evaluation Results:** Evaluation using the generated and comparison results: 
     ```bash
     cd ActionAnticipationModule
     python test_precision_recall.py
@@ -70,21 +70,24 @@ To reproduce the final results of the paper (Mistake Detection), utilize the **A
 If you wish to evaluate the performance of individual components (ARM and ACM) separately:
 
 **1. ARM (Action Recognition Module)**
-Evaluate the action recognition performance.
+Evaluate the action recognition performance:
+
     ```bash
     cd ActionRecognitionModule
     python run_net.py --cfg configs/fine_action_recognition.yaml
     ```
 
 **2. ACM (Action Captioning Module)**
-Generate Narrations.
+Generate Narrations:
+
     ```bash
     cd ActionCaptioningModule
     python python main.py 
     ```
 > **Note:** This process can be time consuming, we provide the generated results for evaluations directly. 
 
-Evaluation using the generated results.
+Evaluation using the generated results:
+
     ```bash
     cd ActionCaptioningModule
     python test.py
@@ -96,6 +99,7 @@ Evaluation using the generated results.
 To train the Action Recognition Model (ARM) from scratch or fine-tune it:
 1.  **Modify Configuration:** Open configs/fine_action_recognition.yaml and ensure the mode is set to Train (e.g., enable training flags).
 2.  **Start Training:** Run the training script (supports multi-GPU, e.g., 3 GPUs).
+   
     ```bash
     cd ActionRecognitionModule
     python run_net.py --cfg configs/fine_action_recognition.yaml NUM_GPUS 3
