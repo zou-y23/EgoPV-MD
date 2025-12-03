@@ -15,9 +15,9 @@ This repository provides the PyTorch implementation of the paper "Mistake Detect
 ## Datasets
 Prepare the datasets (HoloAssist [1], and Assembly101 [2]) according to the instructions.
 
-### HoloAssist
+### HoloAssist Dataset File Structure
 Follow the instructions to download [videos](https://holoassist.github.io/) and [labels](https://holoassist.github.io/). 
-HoloAssist Dataset File Structure
+```text
 data/
 └── HoloAssist/
     ├── annotations/
@@ -34,19 +34,15 @@ data/
         ├── R013-7July-Nespresso/
         ├── R014-7July-DSLR/
         └── ...
-
+```
 ## Prepare Offline Models
-
-To reproduce our results, you need to prepare the three offline pre-trained models (ARM, ACM, and AAM). 
-
-### 1. Download Checkpoints
 Please download the models from the links below and place them in their respective module directories:
 
 | Model | Full Name | Directory | Model Link |
 | :--- | :--- | :--- | :---: |
-| **ARM** | Action Recognition Model | https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionReconitionModule | [Google Drive](https://drive.google.com/drive/folders/1jqsvvKB86gB8WtgOAWtN5Y_AR6SmzZys?usp=drive_link) |
-| **ACM** | Action Captioning Model | https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionCaptioningModule | [Google Drive](https://drive.google.com/drive/folders/1AqGsfZU8sIni5eLziTnjEhHnqScX9tl9?usp=drive_link) |
-| **AAM** | Action Anticipation Model | https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionAnticipationModule | [Google Drive](https://drive.google.com/drive/folders/1cqkRx5Sj_oD0yf9nMJm7rJXWPoVby8-_?usp=drive_link) |
+| **ARM** | Action Recognition Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionRecognitionModule) | [Google Drive](https://drive.google.com/drive/folders/1jqsvvKB86gB8WtgOAWtN5Y_AR6SmzZys?usp=drive_link) |
+| **ACM** | Action Captioning Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionCaptioningModule) | [Google Drive](https://drive.google.com/drive/folders/1AqGsfZU8sIni5eLziTnjEhHnqScX9tl9?usp=drive_link) |
+| **AAM** | Action Anticipation Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionAnticipationModule) | [Google Drive](https://drive.google.com/drive/folders/1cqkRx5Sj_oD0yf9nMJm7rJXWPoVby8-_?usp=drive_link) |
 
 ## Usage
 
@@ -59,13 +55,14 @@ To reproduce the final results of the paper (Mistake Detection), utilize the **A
 
 1.  **Generate Predictions:** Load the pre-trained model and generate predictions. 
     ```bash
-    cd AAM
+    cd ActionAnticipationModule
     python generate_text.py
     ```
 > **Note:** This process can be time consuming, we provide the generated results for evaluations directly. 
 
 2.  **Evaluation Results:** Evaluation using the generated and comparison results. 
     ```bash
+    cd ActionAnticipationModule
     python test_precision_recall.py
     ```
 --- 
