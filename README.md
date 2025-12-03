@@ -40,9 +40,9 @@ Please download the models from the links below and place them in their respecti
 
 | Model | Full Name | Directory | Model Link |
 | :--- | :--- | :--- | :---: |
-| **ARM** | Action Recognition Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionRecognitionModule) | [Google Drive](https://drive.google.com/drive/folders/1jqsvvKB86gB8WtgOAWtN5Y_AR6SmzZys?usp=drive_link) |
-| **ACM** | Action Captioning Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionCaptioningModule) | [Google Drive](https://drive.google.com/drive/folders/1AqGsfZU8sIni5eLziTnjEhHnqScX9tl9?usp=drive_link) |
-| **AAM** | Action Anticipation Model | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionAnticipationModule) | [Google Drive](https://drive.google.com/drive/folders/1cqkRx5Sj_oD0yf9nMJm7rJXWPoVby8-_?usp=drive_link) |
+| **ARM** | Action Recognition Module | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionRecognitionModule) | [Google Drive](https://drive.google.com/drive/folders/1jqsvvKB86gB8WtgOAWtN5Y_AR6SmzZys?usp=drive_link) |
+| **ACM** | Action Captioning Module | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionCaptioningModule) | [Google Drive](https://drive.google.com/drive/folders/1AqGsfZU8sIni5eLziTnjEhHnqScX9tl9?usp=drive_link) |
+| **AAM** | Action Anticipation Module | [Link](https://github.com/zou-y23/EgoPV-MD/tree/7a71c31687e5cbf0091a6de8462a916ce2ba8026/ActionAnticipationModule) | [Google Drive](https://drive.google.com/drive/folders/1cqkRx5Sj_oD0yf9nMJm7rJXWPoVby8-_?usp=drive_link) |
 
 ## Usage
 
@@ -65,27 +65,26 @@ To reproduce the final results of the paper (Mistake Detection), utilize the **A
     cd ActionAnticipationModule
     python test_precision_recall.py
     ```
---- 
 
 #### Modular Performance Evaluation
 If you wish to evaluate the performance of individual components (ARM and ACM) separately:
 
 **1. ARM (Action Recognition Module)**
-Evaluate the action recognition performance:
+Evaluate the action recognition performance.
     ```bash
     cd ActionRecognitionModule
     python run_net.py --cfg configs/fine_action_recognition.yaml
     ```
 
 **2. ACM (Action Captioning Module)**
-Generate Narrations:
+Generate Narrations.
     ```bash
     cd ActionCaptioningModule
     python python main.py 
     ```
 > **Note:** This process can be time consuming, we provide the generated results for evaluations directly. 
 
-Evaluation using the generated results:
+Evaluation using the generated results.
     ```bash
     cd ActionCaptioningModule
     python test.py
@@ -96,7 +95,7 @@ Evaluation using the generated results:
 #### Train ARM
 To train the Action Recognition Model (ARM) from scratch or fine-tune it:
 1.  **Modify Configuration:** Open configs/fine_action_recognition.yaml and ensure the mode is set to Train (e.g., enable training flags).
-2.  **Start Training:** Run the training script (supports multi-GPU, e.g., 3 GPUs):
+2.  **Start Training:** Run the training script (supports multi-GPU, e.g., 3 GPUs).
     ```bash
     cd ActionRecognitionModule
     python run_net.py --cfg configs/fine_action_recognition.yaml NUM_GPUS 3
